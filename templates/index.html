@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Results</title>
+</head>
+<body>
+    <h1>Algorithm Results</h1>
+
+    <form method="post" action="/">
+        <label for="start_node">Start Node:</label>
+        <input type="number" name="start_node" required>
+
+        <label for="end_node">End Node:</label>
+        <input type="number" name="end_node" required>
+
+        <button type="submit">Run Algorithm</button>
+    </form>
+
+    {% if shortest_distance is defined %}
+        <h2>Shortest Distance (Eager Dijkstra's Algorithm)</h2>
+        <p>Distance from Node {{ start_node }} to Node {{ end_node }}: {{ shortest_distance }}</p>
+    {% endif %}
+
+    <h2>Vertices Considered:</h2>
+    <ul>
+        {% for vertex, demand in vertices %}
+            <li>Vertex {{ vertex }}: Net Demand: {{ demand }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
